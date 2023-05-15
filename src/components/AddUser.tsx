@@ -4,6 +4,8 @@ import React, { useState } from 'react'
 import * as yup from "yup"
 import FormTextField from './FormTextField'
 import { IBaseUser } from './Interface'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 interface Iprops {
     onAddUser: (user: IBaseUser) => void;
@@ -34,6 +36,7 @@ const AddUser: React.FunctionComponent<Iprops>  = (props) => {
 
     const [ formData , setFormData] = useState(initUser);
 
+    const notify = () => toast.success("User Added Successfully");
 
     const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name , value } = e.target;
@@ -117,9 +120,11 @@ const AddUser: React.FunctionComponent<Iprops>  = (props) => {
                   size="large"
                   color="primary"
                   disabled={formikProps.isSubmitting}
+                  onClick={notify}
                 >
                   Submit
                 </Button>
+                <ToastContainer />
               </Grid>
             </Grid>
           </Form>

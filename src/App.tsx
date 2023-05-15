@@ -40,18 +40,22 @@ function App() {
 
   return (
     <div className="App">
-      <h3>User Registration Form</h3>
+      <h3 className='my-5'>User Registration Form</h3>
 
       <div className="user-flex-wrapper">
         {editing ? (
+          <>  
+           <h3 className='my-5'>Edit User</h3>
           <EditUser
             user={editUser}
             onUpdateUser={onUpdateUser}
             setEdit={setEdit}
           />
+          </>
         ) : (
           <AddUser onAddUser={onAddUser} />
         )}
+         <h1 className='mt-5'>View Users</h1>
         <UserTable
           users={users}
           onEdit={onCurrentUser}

@@ -1,5 +1,7 @@
 import React from 'react'
 import {IUser} from './Interface'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 interface Iprops { 
   users: Array<IUser>;
@@ -9,10 +11,11 @@ interface Iprops {
 
 const UserTable: React.FunctionComponent<Iprops> = (props) => {
 
+
+  const notifyError = () => toast.error("User Deleted Successfully"); 
+
   return (
     <div>
-         <h1 className='mt-5'>View Users</h1>
-
          <div className='d-flex justify-content-center align-items-center'>
          <table className='table my-5'>
             <tr>
@@ -33,7 +36,8 @@ const UserTable: React.FunctionComponent<Iprops> = (props) => {
                 <td>{i["password"]}</td>
                 <td>
                   <button className='btn btn-primary mx-2' onClick={() => props.onEdit(i)}>Edit</button>
-                  <button className='btn btn-danger' onClick={() => props.onDelete(i)}>Delete</button>
+                  <button className='btn btn-danger' onClick={() => {props.onDelete(i);  notifyError()}}>Delete</button>
+                  <ToastContainer />
                 </td>
               </tr>
             ))

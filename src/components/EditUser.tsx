@@ -4,6 +4,8 @@ import { Field, Form, Formik, FormikProps } from 'formik';
 import { Button, Container, Grid } from '@mui/material';
 import * as yup from "yup"
 import FormTextField from './FormTextField'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 interface IProps {
    user: IUser;
@@ -31,6 +33,8 @@ const EditUser = (props: IProps) => {
    const [user, setUser] = useState(props.user);
 
    useEffect(() => setUser(props.user), [props]);
+
+   const notify = () => toast.success("User Updated Successfully");
 
    const onFormSubmitNew = (e: any) => {
       console.log('e: ', e);
@@ -115,6 +119,7 @@ const EditUser = (props: IProps) => {
                   color="primary"
                   className='mx-2'
                   disabled={formikProps.isSubmitting}
+                  onClick={notify}
                 >
                   Update
                 </Button>
@@ -124,6 +129,7 @@ const EditUser = (props: IProps) => {
                   variant="outlined"
                   size="large"
                   color="error"
+                  onClick={() => props.setEdit(false)}
                 >
                   Cancel
                 </Button>
