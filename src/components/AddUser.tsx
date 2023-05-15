@@ -34,21 +34,13 @@ const AddUser: React.FunctionComponent<Iprops>  = (props) => {
 
     const [ formData , setFormData] = useState(initUser);
 
-    const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        props.onAddUser(formData);
-        setFormData(initUser);
-    }
-
-    console.log('This is Form Data',formData);
-
 
     const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name , value } = e.target;
+        console.log('This is Called');
         console.log(e.target);
         setFormData({ ...formData , [name] : value});
     }
-
 
   return (
     <Container maxWidth='md'>
@@ -67,7 +59,7 @@ const AddUser: React.FunctionComponent<Iprops>  = (props) => {
             values : FormValues,
             formikHelpers : FormikHelpers<FormValues>
         ) => {
-            alert(JSON.stringify(values, null, 2));
+            // alert(JSON.stringify(values, null, 2));
             props.onAddUser(values);
             setFormData(initUser);
             formikHelpers.setSubmitting(false);
@@ -83,7 +75,7 @@ const AddUser: React.FunctionComponent<Iprops>  = (props) => {
                   size="small"
                   component={FormTextField}
                   value={formData.firstName}
-                  onChange={onInputChange}
+                  onChange={() => onInputChange}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -111,6 +103,7 @@ const AddUser: React.FunctionComponent<Iprops>  = (props) => {
                 <Field
                   name="password"
                   label="Password"
+                  type='password'
                   size="small"
                   component={FormTextField}
                   value={formData.password}

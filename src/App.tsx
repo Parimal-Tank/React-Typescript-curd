@@ -7,12 +7,10 @@ import EditUser from './components/EditUser';
 
 
 const defaultUsers: Array<IUser> = [
-  { firstName: "Parimal", lastName: "Tank", id: 1, password: 'parimal' , email: "parimal@123" },
+  { firstName: "Parimal", lastName: "Tank", id: 1, password: 'parimal' , email: "parimaltank2001@gmail.com" },
 ];
 
 const initCurrentUser: IUser = { firstName: "", lastName: "", password:"", id: 0 , email: ""};
-
-
 
 function App() {
 
@@ -31,7 +29,8 @@ function App() {
   }
 
   const onUpdateUser = (id: number , newUser: IUser ) => {
-      setEdit(false);
+      setEdit(false); 
+      console.log('this is new user',newUser)
       setUsers(users.map(i => (i.id === id ? newUser : i)));
   }
 
