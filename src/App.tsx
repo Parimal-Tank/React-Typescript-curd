@@ -7,7 +7,7 @@ import EditUser from './components/EditUser';
 
 
 const defaultUsers: Array<IUser> = [
-  { firstName: "Parimal", lastName: "Tank", id: 1, password: 'parimal' , email: "parimaltank2001@gmail.com" },
+  { firstName: "Parimal", lastName: "Tank", id: 1, password: 'abc' , email: "abc@gmail.com" },
 ];
 
 const initCurrentUser: IUser = { firstName: "", lastName: "", password:"", id: 0 , email: ""};
